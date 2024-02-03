@@ -26,9 +26,13 @@ jobs:
     - name: Run Cypress tests on ${{inputs.Browser}} Browser in ${{inputs.Headed}} Headed mode
       uses: cypress-io/github-action@v6
       with: 
-        cond: ${{inputs.Headed}}
-        if_true: npm run test:${{inputs.Browser}}:headed
-        if_false: npm run test:${{inputs.Browser}}
+        if: ${{inputs.Headed}}
+        run: npm run test:${{inputs.Browser}}:headed
+    - name: Run Cypress tests on ${{inputs.Browser}} Browser in ${{inputs.Headed}} Headed mode
+      uses: cypress-io/github-action@v6
+      with: 
+        if: ${{inputs.Headed}}
+        run: npm run test:${{inputs.Browser}}:headed
 
             
         
