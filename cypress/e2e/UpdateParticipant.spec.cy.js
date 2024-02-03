@@ -23,7 +23,7 @@ describe("Update Participant Details",()=>{
 
     })
 
-    it.only('Walmart Search Finding',()=>{
+    it.only('Amazon Search Finding',()=>{
         cy.visit("https://www.amazon.in/",{timeout:10000})
         cy.get("#twotabsearchtextbox").type("{shift}goodies").wait(10000)
         .get("div.s-suggestion.s-suggestion-ellipsis-direction span").each(($val,index,$list)=>{
