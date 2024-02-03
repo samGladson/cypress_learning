@@ -27,8 +27,8 @@ jobs:
       uses: cypress-io/github-action@v6
       with: 
         cond: ${{inputs.Headed}}
-        if_true: cypress run --browser ${{inputs.Browser}} --headed || npm run posttest
-        if_false: cypress run --browser ${{inputs.Browser}} || npm run posttest
+        if_true: npm run test:${{inputs.Browser}}:headed
+        if_false: npm run test:${{inputs.Browser}}
 
             
         

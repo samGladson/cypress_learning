@@ -13,4 +13,4 @@ jobs:
       - name: Cypress run
         uses: cypress-io/github-action@v6
         with:
-          build: cypress run --browser chrome || npm run posttest
+          build: npm run test:chrome
