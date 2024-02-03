@@ -24,15 +24,11 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
     - name: Run Cypress tests on ${{inputs.Browser}} Browser in ${{inputs.Headed}} Headed mode
-      uses: cypress-io/github-action@v6
-      with: 
-        if: ${{inputs.Headed}}
-        run: npm run test:${{inputs.Browser}}:headed
+      if: ${{inputs.Headed}}
+      run: npm run test:${{inputs.Browser}}:headed
     - name: Run Cypress tests on ${{inputs.Browser}} Browser in ${{inputs.Headed}} Headed mode
-      uses: cypress-io/github-action@v6
-      with: 
-        if: ${{inputs.Headed}}
-        run: npm run test:${{inputs.Browser}}:headed
+      if: ${{!inputs.Headed}}
+      run: npm run test:${{inputs.Browser}}
 
             
         
