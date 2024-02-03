@@ -23,33 +23,12 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-    - name: Run Cypress tests on ${{inputs.Browser}} Browser in ${{inputs.Headed}}
+    - name: Run Cypress tests on ${{inputs.Browser}} Browser in ${{inputs.Headed}} Headed mode
       uses: cypress-io/github-action@v6
       with: 
-        cond: ${{inputs.Browser == 'chrome'}} && ${{inputs.Headed}}
-        build: npm run test:chrome:headed
-    - name: Run Cypress tests on ${{inputs.Browser}} Browser in ${{inputs.Headed}}
-      uses: cypress-io/github-action@v6
-      with: 
-        cond: ${{inputs.Browser == 'chrome'}} && ${{!inputs.Headed}}
-        build: npm run test:chrome
-    - name: Run Cypress tests on ${{inputs.Browser}} Browser in ${{inputs.Headed}}
-      uses: cypress-io/github-action@v6
-      with: 
-        cond: ${{inputs.Browser == 'firefox'}} && ${{!inputs.Headed}}
-        build: npm run test:firefox
-    - name: Run Cypress tests on ${{inputs.Browser}} Browser in ${{inputs.Headed}}
-      uses: cypress-io/github-action@v6
-      with: 
-        cond: ${{inputs.Browser == 'firefox'}} && ${{inputs.Headed}}
-        build: npm run test:firefox:headed
-    - name: Run Cypress tests on ${{inputs.Browser}} Browser in ${{inputs.Headed}}
-      uses: cypress-io/github-action@v6
-      with: 
-        cond: ${{inputs.Browser == 'electron'}} && ${{inputs.Headed}}
-        build: npm run test:electron:headed
-    - name: Run Cypress tests on ${{inputs.Browser}} Browser in ${{inputs.Headed}}
-      uses: cypress-io/github-action@v6
-      with: 
-        cond: ${{inputs.Browser == 'electron'}} && ${{!inputs.Headed}}
-        build: npm run test:electron
+        cond: ${{inputs.Headed}}
+        if_true: cypress run --browser ${{inputs.Browser}} --headed || npm run posttest
+        if_false: cypress run --browser ${{inputs.Browser}} || npm run posttest
+
+            
+        
