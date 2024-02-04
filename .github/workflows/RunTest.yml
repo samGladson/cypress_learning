@@ -26,11 +26,11 @@ jobs:
     - name: Install Dependencies
       run: npm ci
     - name: Install Cypress
-      run: npm install cypress
-    - name: Run Cypress tests on ${{inputs.Browser}} Browser in ${{inputs.Headed}} Headed mode
+      run: npm install ypress
+    - name: Run Cypress tests on ${{inputs.Browser}} Browser in Headed mode
       if: ${{inputs.Headed}}
       run: npm run test:${{inputs.Browser}}:headed
-    - name: Run Cypress tests on ${{inputs.Browser}} Browser in ${{inputs.Headed}} Headed mode
+    - name: Run Cypress tests on ${{inputs.Browser}} Browser
       if: ${{!inputs.Headed}}
       run: npm run test:${{inputs.Browser}}
 
