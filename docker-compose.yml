@@ -4,6 +4,6 @@ services:
   image: cypress
   build: .
   container_name: cypress_docker
-  command: npm run test 
+  command: npm run test:chrome --headed 
   volumes: 
       - $PWD:/app
